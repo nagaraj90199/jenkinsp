@@ -5,6 +5,7 @@ from password import password_strength
 def test_strong_password():
     output = password_strength("Nagaraj", "Strong@123")
     assert "Strength: STRONG" in output
+    assert "Password is secure." in output
 
 
 def test_medium_password():
@@ -15,6 +16,7 @@ def test_medium_password():
 def test_weak_password_common():
     output = password_strength("Arun", "password")
     assert "Password is too common and unsafe." in output
+    assert "Strength: WEAK" in output
 
 
 def test_missing_special_character():
