@@ -74,3 +74,4 @@ def password_strength(username, password):
 
 if __name__ == "__main__":
     print(password_strength("Nagaraj", "Strong@123"))
+
