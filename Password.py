@@ -9,6 +9,7 @@ def password_strength(username, password):
     score = 0
     feedback = []
 
+    # Length check
     if len(password) >= 8:
         score += 2
     else:
@@ -17,30 +18,36 @@ def password_strength(username, password):
     if len(password) >= 12:
         score += 1
 
+    # Uppercase check
     if any(c.isupper() for c in password):
         score += 2
     else:
         feedback.append("Add at least one uppercase letter.")
 
+    # Lowercase check
     if any(c.islower() for c in password):
         score += 2
     else:
         feedback.append("Add at least one lowercase letter.")
 
+    # Digit check
     if any(c.isdigit() for c in password):
         score += 2
     else:
         feedback.append("Add at least one number.")
 
+    # Special character check
     if any(c in string.punctuation for c in password):
         score += 2
     else:
         feedback.append("Add at least one special character.")
 
+    # Common password check
     if password.lower() in common_passwords:
         score = 0
         feedback = ["Password is too common and unsafe."]
 
+    # Strength classification
     if score <= 4:
         strength = "WEAK"
     elif score <= 8:
@@ -48,6 +55,7 @@ def password_strength(username, password):
     else:
         strength = "STRONG"
 
+    # Result output
     result = (
         f"User Name: {username}\n"
         f"Password Score: {score} / 11\n"
@@ -65,6 +73,4 @@ def password_strength(username, password):
 
 
 if __name__ == "__main__":
-    username = "Nagaraj"
-    password = "Strong@123"
-    print(password_strength(username, password))
+    print(password_strength("Nagaraj", "Strong@123"))
